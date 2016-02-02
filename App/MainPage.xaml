@@ -7,7 +7,35 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    </Grid>
+    <RelativePanel Name="RootPage">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="Phone">
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowHeight="600"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Setting.(RelativePanel.AlignBottomWithPanel)" Value="True"/>
+                        <Setter Target="Year.(RelativePanel.Below)" Value=""/>
+                        <Setter Target="Year.(RelativePanel.RightOf)" Value="Setting"/>
+                        <Setter Target="Year.(RelativePanel.AlignBottomWith)" Value="Setting"/>
+                        <Setter Target="Month.(RelativePanel.Below)" Value=""/>
+                        <Setter Target="Month.(RelativePanel.RightOf)" Value="Year"/>
+                        <Setter Target="Month.(RelativePanel.AlignBottomWith)" Value="Year"/>
+                    </VisualState.Setters>
+                </VisualState>
+              
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        
+        <Button x:Name="Setting" Height="100" Width="100" RelativePanel.AlignBottomWithPanel="False">
+            设置
+        </Button>
+        <Button Name="Year" Height="100" Width="100" RelativePanel.Below="Setting">
+            年
+        </Button>
+        <Button Name="Month" Height="100" Width="100" RelativePanel.Below="Year">
+            月
+        </Button>
+    </RelativePanel>
 </Page>
