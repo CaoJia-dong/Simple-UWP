@@ -12,30 +12,75 @@
             <VisualStateGroup x:Name="Phone">
                 <VisualState>
                     <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowHeight="600"/>
+                        <AdaptiveTrigger MinWindowWidth="600"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="Setting.(RelativePanel.AlignBottomWithPanel)" Value="True"/>
-                        <Setter Target="Year.(RelativePanel.Below)" Value=""/>
-                        <Setter Target="Year.(RelativePanel.RightOf)" Value="Setting"/>
-                        <Setter Target="Year.(RelativePanel.AlignBottomWith)" Value="Setting"/>
-                        <Setter Target="Month.(RelativePanel.Below)" Value=""/>
-                        <Setter Target="Month.(RelativePanel.RightOf)" Value="Year"/>
-                        <Setter Target="Month.(RelativePanel.AlignBottomWith)" Value="Year"/>
+                        <Setter Target="Cal.(RelativePanel.AlignLeftWithPanel)" Value="False"/>
+                        <Setter Target="Cal.(RelativePanel.Above)" Value=""/>
+                        <Setter Target="Cal.(RelativePanel.RightOf)" Value="Setting"/>
+                        <Setter Target="Cal.(RelativePanel.AlignBottomWithPanel)" Value="True"/>
+                        <Setter Target="Year.(RelativePanel.AlignBottomWith)" Value=""/>
+                        <Setter Target="Year.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
+                        <Setter Target="Year.(RelativePanel.AlignTopWithPanel)" Value="True"/>
+                        <Setter Target="Year.(RelativePanel.AlignRightWithPanel)" Value="False"/>
+                        <Setter Target="Month.(RelativePanel.AlignBottomWith)" Value=""/>
+                        <Setter Target="Month.(RelativePanel.LeftOf)" Value=""/>
+                        <Setter Target="Month.(RelativePanel.Below)" Value="Year"/>
+                        <Setter Target="Add.(RelativePanel.AlignBottomWith)" Value=""/>
+                        <Setter Target="Add.(RelativePanel.LeftOf)" Value=""/>
+                        <Setter Target="Add.(RelativePanel.Below)" Value="Month"/>
+                        <Setter Target="Fill.(RelativePanel.AlignBottomWith)" Value=""/>
+                        <Setter Target="Fill.(RelativePanel.RightOf)" Value=""/>
+                        <Setter Target="Fill.(RelativePanel.AlignTopWith)" Value=""/>
+                        <Setter Target="Fill.(RelativePanel.LeftOf)" Value="Cal"/>
+                        <Setter Target="Fill.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
+                        <Setter Target="Fill.(RelativePanel.Below)" Value="Add"/>
+                        <Setter Target="Fill.(RelativePanel.Above)" Value="Setting"/>
                     </VisualState.Setters>
                 </VisualState>
-              
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
-        
-        <Button x:Name="Setting" Height="100" Width="100" RelativePanel.AlignBottomWithPanel="False">
+        <Rectangle 
+            Name="Cal"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.AlignTopWithPanel="True"
+            RelativePanel.Above="Setting"
+            Fill="Azure"/>
+        <Button Name="Setting" Height="100" Width="100" 
+                RelativePanel.AlignBottomWithPanel="True" 
+                RelativePanel.AlignLeftWithPanel="True"
+                Background="GhostWhite">
             设置
         </Button>
-        <Button Name="Year" Height="100" Width="100" RelativePanel.Below="Setting">
+        <Button Name="Year" Height="100" Width="100"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.AlignBottomWith="Setting"
+                Background="GhostWhite">
             年
         </Button>
-        <Button Name="Month" Height="100" Width="100" RelativePanel.Below="Year">
+        <Button Name="Month" Height="100" Width="100" 
+                RelativePanel.LeftOf="Year"
+                RelativePanel.AlignBottomWith="Year"
+                Background="GhostWhite">
             月
         </Button>
+        <Button Name="Add" Height="100" Width="100"
+                RelativePanel.LeftOf="Month"
+                RelativePanel.AlignBottomWith="Year"
+                Background="GhostWhite">
+            添加
+        </Button>
+        <Rectangle 
+            Name="Fill" 
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            RelativePanel.AlignBottomWith="Setting"
+            RelativePanel.AlignTopWith="Setting"
+            RelativePanel.RightOf="Setting"
+            RelativePanel.LeftOf="Add"
+            Fill="GhostWhite"/>
     </RelativePanel>
 </Page>
